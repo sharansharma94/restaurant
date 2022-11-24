@@ -11,9 +11,9 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var Client *mongo.Client = dbInstance()
+var Client *mongo.Client
 
-func dbInstance() *mongo.Client {
+func DbInstance() *mongo.Client {
 	Uri := os.Getenv("MONGO_URI")
 	client, err := mongo.NewClient(options.Client().ApplyURI(Uri))
 
@@ -31,6 +31,7 @@ func dbInstance() *mongo.Client {
 	}
 
 	fmt.Println("connected to mongodb")
+	Client = client
 	return client
 
 }

@@ -3,17 +3,22 @@ package main
 import (
 	"fmt"
 	"os"
-	"restaurants-manager/routes"
+	"restaurants-manager/src/database"
+	"restaurants-manager/src/routes"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-// var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "food")
-
 func main() {
-
+	// Loading environment variables from .env
 	godotenv.Load()
+
+	// database connection
+	database.DbInstance()
+	var _ *mongo.Collection = database.OpenCollection(database.Client, "food")
+
 	port := os.Getenv("PORT")
 
 	if port == "" {
