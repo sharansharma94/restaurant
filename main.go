@@ -6,12 +6,14 @@ import (
 	"restaurants-manager/routes"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 // var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "food")
 
 func main() {
 
+	godotenv.Load()
 	port := os.Getenv("PORT")
 
 	if port == "" {
