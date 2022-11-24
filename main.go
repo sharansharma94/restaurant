@@ -23,11 +23,11 @@ func main() {
 	routes.UserRoutes(router)
 	// router.Use(middleware.Authentication())
 
-	// routes.Food(router)
+	routes.Food(router)
 	// routes.Menu(router)
 	// routes.Table(router)
 	// routes.Order(router)
-	// routes.OrderItem(router)
+	routes.OrderItem(router)
 	// routes.Invoice(router)
 
 	fmt.Println("starting Server...")
