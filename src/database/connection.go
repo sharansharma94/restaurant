@@ -41,6 +41,9 @@ func GetClient() *mongo.Client {
 }
 
 func OpenCollection(client *mongo.Client, collectionName string) *mongo.Collection {
-	var collection *mongo.Collection = client.Database("restaurant").Collection(collectionName)
-	return collection
+	if client == nil {
+		DbInstance()
+		return Client.Database("restaurant").Collection(collectionName)
+	}
+	return client.Database("restaurant").Collection(collectionName)
 }
